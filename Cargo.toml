@@ -1,0 +1,12 @@
+[package]
+name = "roplat_rerun"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rerun = "0.26.0"
+robot_behavior = { path = "../robot_behavior" }
+rerun_urdf = { path = "../rerun_urdf" }
+rsbullet = { path = "../rsbullet/rsbullet" }
+nalgebra = "0.34.1"
+anyhow = "1.0.100"
