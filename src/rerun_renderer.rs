@@ -1,5 +1,5 @@
 use rerun::{RecordingStream, RecordingStreamBuilder};
-use robot_behavior::{Renderer, RendererResult, RendererRobot, RobotFile};
+use robot_behavior::{AddRobot, Renderer, RendererResult, RobotFile};
 
 use crate::{RerunRobot, rerun_robot::RerunRobotBuilder};
 
@@ -28,8 +28,8 @@ impl Renderer for RerunHost {
     }
 }
 
-impl RendererRobot for RerunHost {
-    type RR<R> = RerunRobot<R>;
+impl AddRobot for RerunHost {
+    type PR<R> = RerunRobot<R>;
     type RB<'a, R: RobotFile> = RerunRobotBuilder<'a, R>;
 
     fn robot_builder<'a, R: RobotFile>(

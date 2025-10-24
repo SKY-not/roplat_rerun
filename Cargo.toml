@@ -2,6 +2,12 @@
 name = "roplat_rerun"
 version = "0.1.0"
 edition = "2024"
+authors = ["Yixing <yanjizhou312@163.com>"]
+readme = "README.md"
+license = "Apache-2.0"
+description = "Rerun integration for Robot Experimentation Platform"
+categories = ["science::robotics", "data-visualization"]
+keywords = ["robot", "robotics", "rerun", "visualization", "roplat"]
 
 [dependencies]
 rerun = "0.26.0"
