@@ -4,7 +4,7 @@ use anyhow::Result;
 use nalgebra as na;
 use rerun as rr;
 use rerun_urdf::RerunUrdfLoader;
-use robot_behavior::{AttachFrom, RobotBuilder, RobotFile};
+use robot_behavior::{AttachFrom, EntityBuilder, RobotFile};
 use rsbullet::RsBulletRobot;
 
 pub struct RerunRobot<R> {
@@ -111,17 +111,19 @@ impl<'a, R: RobotFile> RerunRobotBuilder<'a, R> {
             scaling: None,
         }
     }
+    pub fn mesh_path(mut self, mesh_path: &'static str) -> Self {
+        self.mesh_path = Some(mesh_path.into());
+        self
+    }
 }
 
-impl<'a, R> RobotBuilder<'a, R, RerunRobot<R>> for RerunRobotBuilder<'a, R> {
+impl<'a, R> EntityBuilder<'a> for RerunRobotBuilder<'a, R> {
+    type Entity = RerunRobot<R>;
     fn name(mut self, name: String) -> Self {
         self.name = name;
         self
     }
-    fn mesh_path(mut self, mesh_path: &'static str) -> Self {
-        self.mesh_path = Some(mesh_path.into());
-        self
-    }
+
     fn base(mut self, base: impl Into<na::Isometry3<f64>>) -> Self {
         self.base = Some(base.into());
         self
